@@ -150,7 +150,11 @@ func invite(data map[string]interface{}) {
 
 	audioOnly := false
 	if audioFlag != nil {
-		audioOnly = true
+		switch audioFlag.(type) {
+		case bool: {
+			audioOnly = audioFlag.(bool)
+		}
+		}
 	}
 
 	fmt.Printf("invite: Room: %s, User %s invite %s, audioOnly: %v\n", roomID, inviteID, userList, audioOnly)
